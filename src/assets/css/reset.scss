@@ -1,0 +1,25 @@
+//基础样式
+*{
+  margin: 0;
+  padding: 0;
+}
+a {
+  text-decoration: none;
+  color: #333;
+}
+ul, li {
+  list-style: none;
+}
+html{
+  font-size: 26.666vm;
+}
+body{
+font-size: .16rem;  
+}
+
+html,body,#app{
+  height: 100%;
+}
+h1,h2,h3,h4,h5,h6{
+  font-weight: normal;
+}
