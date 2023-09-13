@@ -1,4 +1,5 @@
 # maizuo_movie
+基于Vue3的卖座网demo项目
 
 ## Project setup
 ```
