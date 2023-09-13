@@ -2,7 +2,7 @@
   <div class="movie">
     <div class="nav-bar">
       <div class="title">卖座电影</div>
-      <div class="location">成都 > </div>
+      <div class="location">成都 ></div>
     </div>
     <div class="content">
       <van-tabs
@@ -11,23 +11,23 @@
         title-active-color="#ff5f16"
       >
         <van-tab title="正在热映">
-          <movie-list></movie-list>
+          <movie-list :apiURL="hotURL"/>
         </van-tab>
-
         <van-tab title="即将上映">
-          <movie-list></movie-list>
+          <movie-list :apiURL="soonURL"/>
         </van-tab>
       </van-tabs>
     </div>
-
   </div>
 </template>
 
 <script setup>
 import movieList from "@/components/movieList.vue"
+import { ref } from "vue"
 
-//组件传值
-
+//定义接口
+const hotURL = ref("getNowPlayingFilmList")
+const soonURL = ref("getComingSoonFilmList")
 
 </script>
 

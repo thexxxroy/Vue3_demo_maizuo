@@ -33,18 +33,21 @@
 
 <script setup>
 import { getMovieList } from "@/servies/modules/movie_list"
-import { ref } from "vue"
+import { onMounted, ref, defineProps} from "vue"
 
 //组件通信
-
+const props = defineProps({
+  apiURL: "",
+})
+onMounted(() => {
+  getMovieList(props.apiURL)
+})
 
 //请求接口数据
 const movieList = ref([]) // 创建movieList变量存储下面拿到的res数据
-getMovieList().then(res => {
-  //把请求到的数据存起来
-  movieList.value = res.data.films //这个movielist是对象，所以是存到它里面的value里面
-  console.log(movieList)
-})
+getMovieList(props.apiURL).then(res => {
+    movieList.value = res.data.films   //把请求到的数据存起来
+  })
 </script>
 
 <style lang="scss" scoped>

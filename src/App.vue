@@ -5,7 +5,7 @@
 </template>
 
 <script setup>
-import movie from "./views/1_Moive/movie"
+import movie from "./views/movie"
 </script>
 
 <style lang="scss" scoped> 
