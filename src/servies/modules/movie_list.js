@@ -4,8 +4,7 @@ import hyRequest from "../new_axios1"
 
 export function getMovieList(url) {
   return hyRequest.get({
-    // url: "getNowPlayingFilmList",
-    url,
+    url
   })
 }
 

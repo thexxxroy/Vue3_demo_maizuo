@@ -14,6 +14,7 @@
           <movie-list :apiURL="hotURL"/>
         </van-tab>
         <van-tab title="即将上映">
+          <!-- <movie-list :apiURL="soonURL"/> -->
           <movie-list :apiURL="soonURL"/>
         </van-tab>
       </van-tabs>

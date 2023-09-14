@@ -33,18 +33,16 @@
 
 <script setup>
 import { getMovieList } from "@/servies/modules/movie_list"
-import { onMounted, ref, defineProps} from "vue"
+import { ref, defineProps} from "vue"
 
-//组件通信
+//组件通信,接收数据
 const props = defineProps({
   apiURL: "",
 })
-onMounted(() => {
-  getMovieList(props.apiURL)
-})
+// 创建movieList变量存储下面拿到的res数据
+const movieList = ref([]) 
 
 //请求接口数据
-const movieList = ref([]) // 创建movieList变量存储下面拿到的res数据
 getMovieList(props.apiURL).then(res => {
     movieList.value = res.data.films   //把请求到的数据存起来
   })
