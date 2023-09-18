@@ -1,4 +1,5 @@
 <template>
+
   <div class="movieList">
     <template v-for="(item, index) in movieList" :key="index">
       <div class="movie-item">
@@ -9,7 +10,7 @@
         <div class="item-info">
           <div class="tittle">{{ item.name }}</div>
           <div class="info">
-            <div class="score">
+            <div class="score" v-if="item.grade">
               观众评分
               <div class="star">{{ item.grade }}</div>
             </div>

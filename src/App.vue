@@ -1,13 +1,10 @@
 <template>
   <div class="App">
-   <movie></movie>
+    <router-view/>
   </div>
 </template>
 
 <script setup>
-import movie from "./views/movie"
 </script>
 
-<style lang="scss" scoped> 
-
-</style>
+<style lang="scss" scoped></style>

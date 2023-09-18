@@ -2,7 +2,10 @@
   <div class="movie">
     <div class="nav-bar">
       <div class="title">卖座电影</div>
-      <div class="location">成都 ></div>
+      <div class="location" @click="cityClick">
+        成都
+        <!-- <router-link to="/city">成都 ></router-link> -->
+      </div>
     </div>
     <div class="content">
       <van-tabs
@@ -11,11 +14,10 @@
         title-active-color="#ff5f16"
       >
         <van-tab title="正在热映">
-          <movie-list :apiURL="hotURL"/>
+          <movie-list :apiURL="hotURL" />
         </van-tab>
         <van-tab title="即将上映">
-          <!-- <movie-list :apiURL="soonURL"/> -->
-          <movie-list :apiURL="soonURL"/>
+          <movie-list :apiURL="soonURL" />
         </van-tab>
       </van-tabs>
     </div>
@@ -24,12 +26,18 @@
 
 <script setup>
 import movieList from "@/components/movieList.vue"
+import router from "@/router";
 import { ref } from "vue"
 
 //定义接口
 const hotURL = ref("getNowPlayingFilmList")
 const soonURL = ref("getComingSoonFilmList")
 
+const cityClick = () => {
+  router.push({
+    path:'/city'
+  })
+}
 </script>
 
 <style lang="scss" scoped>
@@ -44,10 +52,14 @@ const soonURL = ref("getComingSoonFilmList")
     font-size: 18px;
   }
   .location {
+    z-index: 99;
     width: 50px;
     position: absolute;
     top: 0;
     left: 0;
+    a {
+      color: #fff;
+    }
   }
 }
 </style>
