@@ -2,10 +2,7 @@
   <div class="movie">
     <div class="nav-bar">
       <div class="title">卖座电影</div>
-      <div class="location" @click="cityClick">
-        成都
-        <!-- <router-link to="/city">成都 ></router-link> -->
-      </div>
+      <div class="location" @click="cityClick">{{ cityData.name }} ></div>
     </div>
     <div class="content">
       <van-tabs
@@ -26,16 +23,37 @@
 
 <script setup>
 import movieList from "@/components/movieList.vue"
-import router from "@/router";
+import router from "@/router"
 import { ref } from "vue"
+import { showDialog } from "vant"
+import "vant/es/dialog/style"
+const cityData = ref()
+//选择城市相关操作
+if (localStorage.nowCity) {
+  // 通过本地拿到数据
+  cityData.value = JSON.parse(localStorage.nowCity)
+} else {
+  showDialog({
+    message: "请选择城市",
+    theme: "round-button",
+  }).then(() => {
+    router.push({ path: "/city" })
+  })
+}
+// console.log(cityData.value)
 
-//定义接口
-const hotURL = ref("getNowPlayingFilmList")
-const soonURL = ref("getComingSoonFilmList")
+//定义接口,获取数据(两种拼接方法)
+const hotURL = ref(
+  "getNowPlayingFilmList?cityId=" + cityData.value.cityId + "&pageSize="
+)
+const soonURL = ref(
+  "getComingSoonFilmList?cityId=" + cityData.value.cityId + "&pageSize="
+)
 
+//点击左上角跳转到city页面
 const cityClick = () => {
   router.push({
-    path:'/city'
+    path: "/city",
   })
 }
 </script>
@@ -52,8 +70,7 @@ const cityClick = () => {
     font-size: 18px;
   }
   .location {
-    z-index: 99;
-    width: 50px;
+    padding: 0 10px;
     position: absolute;
     top: 0;
     left: 0;

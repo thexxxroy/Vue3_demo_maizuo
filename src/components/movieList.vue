@@ -1,52 +1,82 @@
 <template>
-
   <div class="movieList">
-    <template v-for="(item, index) in movieList" :key="index">
-      <div class="movie-item">
-        <div class="cover">
-          <img :src="item.poster" alt="" />
-        </div>
+    <van-list
+      v-model:loading="loading"
+      :finished="finished"
+      finished-text="已经到我的底线了>_<"
+      @load="onLoad"
+    >
+      <template v-for="(item, index) in movieList" :key="index">
+        <div class="movie-item">
+          <div class="cover">
+            <img :src="item.poster" alt="" />
+          </div>
 
-        <div class="item-info">
-          <div class="tittle">{{ item.name }}</div>
-          <div class="info">
-            <div class="score" v-if="item.grade">
-              观众评分
-              <div class="star">{{ item.grade }}</div>
-            </div>
-            <div class="director">导演：{{ item.director }}</div>
-            <div class="actors">
-              演员：
-              <template v-for="iten in item.actors" :key="index">
-                <span class="actor" v-show="iten.role !== '导演'">
-                  {{ iten.name }}&nbsp;
-                </span>
-              </template>
+          <div class="item-info">
+            <div class="tittle">{{ item.name }}</div>
+            <div class="info">
+              <div class="score" v-if="item.grade">
+                观众评分
+                <div class="star">{{ item.grade }}</div>
+              </div>
+              <div class="director">导演：{{ item.director }}</div>
+              <div class="actors">
+                演员：
+                <template v-for="iten in item.actors" :key="index">
+                  <span class="actor" v-show="iten.role !== '导演'">
+                    {{ iten.name }}&nbsp;
+                  </span>
+                </template>
+              </div>
             </div>
           </div>
-        </div>
 
-        <div class="buybtn">购票</div>
-      </div>
-    </template>
+          <div class="buybtn">购票</div>
+        </div>
+      </template>
+    </van-list>
   </div>
 </template>
 
 <script setup>
 import { getMovieList } from "@/servies/modules/movie_list"
-import { ref, defineProps} from "vue"
+import { ref, defineProps } from "vue"
+
+//下拉列表组件
+const loading = ref(false)
+const finished = ref(false)
+let pageSize = 1
 
 //组件通信,接收数据
 const props = defineProps({
-  apiURL: "",
+  apiURL: String,
 })
-// 创建movieList变量存储下面拿到的res数据
-const movieList = ref([]) 
+// console.log(props.apiURL+1);
 
-//请求接口数据
-getMovieList(props.apiURL).then(res => {
-    movieList.value = res.data.films   //把请求到的数据存起来
-  })
+// 创建movieList变量存储下面拿到的res数据
+const movieList = ref([])
+
+const onLoad = () => {
+  // 异步更新数据
+  const totalPages = ref(0)
+
+  setTimeout(() => {
+    pageSize += 5
+
+    getMovieList(props.apiURL + pageSize).then(res => {
+      movieList.value = res.data.films //把请求到的数据存起来
+      // console.log(movieList.value)
+      totalPages.value = res.data.total
+
+    })
+   
+    // 加载状态结束
+    // loading.value = false
+    if (pageSize >= totalPages.value) {
+      finished.value = true
+    }
+  }, 1000)
+}
 </script>
 
 <style lang="scss" scoped>
