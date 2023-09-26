@@ -45,34 +45,30 @@ import { ref, defineProps } from "vue"
 //下拉列表组件
 const loading = ref(false)
 const finished = ref(false)
-let pageSize = 1
+const pageSize = ref(1)
+const totalPages = ref()
+const movieList = ref([])
 
 //组件通信,接收数据
 const props = defineProps({
   apiURL: String,
 })
-// console.log(props.apiURL+1);
 
-// 创建movieList变量存储下面拿到的res数据
-const movieList = ref([])
-
+// 下拉更新
 const onLoad = () => {
+  pageSize.value += 5
+
   // 异步更新数据
-  const totalPages = ref(0)
-
   setTimeout(() => {
-    pageSize += 5
-
-    getMovieList(props.apiURL + pageSize).then(res => {
-      movieList.value = res.data.films //把请求到的数据存起来
-      // console.log(movieList.value)
+    getMovieList(props.apiURL + pageSize.value).then(res => {
+      //把请求到的数据存在变量里
+      movieList.value = res.data.films
       totalPages.value = res.data.total
-
+      // 加载状态结束
+      loading.value = false
     })
-   
-    // 加载状态结束
-    // loading.value = false
-    if (pageSize >= totalPages.value) {
+
+    if (pageSize.value >= totalPages.value) {
       finished.value = true
     }
   }, 1000)
@@ -81,42 +77,42 @@ const onLoad = () => {
 
 <style lang="scss" scoped>
 .movieList {
-  padding-top: 6px;
-  margin: 5px;
+  padding-top: 0.375rem;
+  margin: 0.3125rem;
   .movie-item {
     display: flex;
     align-items: center;
-    margin: 5px;
+    margin: 0.3125rem;
     .cover {
       img {
-        width: 64px;
-        height: 90px;
+        width: 4rem;
+        height: 5.625rem;
       }
     }
     .item-info {
-      padding: 0 10px;
+      padding: 0 0.625rem;
       .tittle {
-        font-size: 14px;
-        margin-bottom: 5px;
+        font-size: 0.875rem;
+        margin-bottom: 0.3125rem;
       }
       .info {
         color: #8c8c8c;
         .score {
-          margin-bottom: 3px;
+          margin-bottom: 0.1875rem;
           display: flex;
           .star {
-            margin-left: 2px;
+            margin-left: 0.125rem;
             font-weight: 500;
             color: #ff5f16;
           }
         }
         .director {
-          margin-bottom: 3px;
+          margin-bottom: 0.1875rem;
         }
         .actors {
           display: flex;
-          width: 240px;
-          margin-bottom: 3px;
+          width: 15rem;
+          margin-bottom: 0.1875rem;
           white-space: nowrap; //文本不会换行
           text-overflow: ellipsis; //文本溢出显示省略号
           overflow: hidden;
@@ -125,11 +121,11 @@ const onLoad = () => {
     }
 
     .buybtn {
-      width: 45px;
+      width: 2.8125rem;
       background-color: #ff5f16;
       color: #fff;
-      padding: 5px;
-      border-radius: 5px;
+      padding: 0.3125rem;
+      border-radius: 0.3125rem;
       display: flex;
       justify-content: center;
     }
