@@ -7,7 +7,7 @@
       @load="onLoad"
     >
       <template v-for="(item, index) in movieList" :key="index">
-        <div class="movie-item">
+        <div class="movie-item" @click="movieItemClick(item.filmId)">
           <div class="cover">
             <img :src="item.poster" alt="" />
           </div>
@@ -41,7 +41,7 @@
 <script setup>
 import { getMovieList } from "@/servies/modules/movie_list"
 import { ref, defineProps } from "vue"
-
+import { useRouter } from "vue-router"
 //下拉列表组件
 const loading = ref(false)
 const finished = ref(false)
@@ -73,6 +73,16 @@ const onLoad = () => {
     }
   }, 1000)
 }
+
+//路由穿参（query或者动态路由）
+const router = useRouter()
+const movieItemClick = id => {
+  // console.log(id)
+  router.push({
+    path: "/movieDetail",
+    query: { id },
+  })
+}
 </script>
 
 <style lang="scss" scoped>
@@ -103,7 +113,7 @@ const onLoad = () => {
           .star {
             margin-left: 0.125rem;
             font-weight: 500;
-            color: #ff5f16;
+            color: var(--main-color);
           }
         }
         .director {
@@ -122,7 +132,7 @@ const onLoad = () => {
 
     .buybtn {
       width: 2.8125rem;
-      background-color: #ff5f16;
+      background-color: var(--main-color);
       color: #fff;
       padding: 0.3125rem;
       border-radius: 0.3125rem;
