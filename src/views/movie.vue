@@ -1,9 +1,11 @@
 <template>
   <div class="movie">
+
     <div class="nav-bar">
       <div class="title">卖座电影</div>
       <div class="location" @click="cityClick">{{ cityData.name }} ></div>
     </div>
+
     <div class="content">
       <van-tabs
         color="#ff5f16"
@@ -18,6 +20,7 @@
         </van-tab>
       </van-tabs>
     </div>
+    <tabbar></tabbar>
   </div>
 </template>
 
@@ -27,6 +30,8 @@ import router from "@/router"
 import { ref } from "vue"
 import { showDialog } from "vant"
 import "vant/es/dialog/style"
+
+
 const cityData = ref()
 //选择城市相关操作
 if (localStorage.nowCity) {
@@ -40,7 +45,6 @@ if (localStorage.nowCity) {
     router.push({ path: "/city" })
   })
 }
-// console.log(cityData.value)
 
 //定义接口,获取数据(两种拼接方法)
 const hotURL = ref(
@@ -59,6 +63,8 @@ const cityClick = () => {
 </script>
 
 <style lang="scss" scoped>
+.movie{
+  padding-bottom: 50px;
 .nav-bar {
   height: 45px;
   line-height: 45px;
@@ -78,5 +84,6 @@ const cityClick = () => {
       color: #fff;
     }
   }
+}
 }
 </style>

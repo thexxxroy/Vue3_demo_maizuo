@@ -1,6 +1,6 @@
 <template>
   <div class="cinima">
-    <h2>cinima</h2>
+    <tabbar></tabbar>
   </div>
 </template>
 
@@ -9,5 +9,8 @@
 </script>
 
 <style lang ="scss" scoped>
+.cinima{
+  padding-bottom: 50px;
 
+}
 </style>

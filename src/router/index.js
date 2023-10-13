@@ -30,16 +30,16 @@ const router = createRouter({
     component: city
    },
    { 
-     path: "/movieDetail/",
-     component:movieDetail
+     path: "/movieDetail",
+     component: movieDetail
    },
    { 
-    path: "/cinima/",
-    component:cinima
+    path: "/cinima",
+    component: cinima
   },
     { 
       path: "/:pathMatch(.*)",
-      component:NotFound
+      component: NotFound
     }
   ],
 })
