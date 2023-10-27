@@ -6,3 +6,4 @@ export function getmovieDetailList(id) {
     url:'getFilmInfo?filmId=' + id,
   })
 }
+

@@ -1,8 +1,10 @@
 <template>
   <div class="nav-bar">
-    <div class="title">电影</div>
-    <div class="location" @click="cityClick">{{ cityData.name }} ></div>
-
+    <div class="title">{{ title }}</div>
+    <div class="location" @click="cityClick" v-if="cityData" >
+      {{ cityData.name }} >
+    </div>
+    <div v-else></div>
   </div>
 </template>
 
@@ -13,9 +15,14 @@ import { showDialog } from "vant"
 import "vant/es/dialog/style"
 const router = useRouter()
 
+defineProps({
+  title: {
+    default: "默认标题",
+  },
+})
 //点击左上角跳转到city页面
 const cityClick = () => {
-  console.log("cityClick");
+  console.log("cityClick")
   router.push({
     path: "/city",
   })
@@ -34,8 +41,6 @@ if (localStorage.nowCity) {
     router.push({ path: "/city" })
   })
 }
-
-
 </script>
 
 <style lang="scss" scoped>
