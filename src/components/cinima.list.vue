@@ -5,7 +5,7 @@
         <div class="left">
           <div class="cinimaName">{{ item.name }}</div>
           <div class="cinimaAddress">{{ item.address }}</div>
-          <div class="tags">改签 小吃</div>
+          <!-- <div class="tags">改签 小吃</div> -->
         </div>
 
         <div class="right">
@@ -31,10 +31,7 @@ const cityId = nowCity.value.cityId
 //影院数据
 const cinimaList = ref([])
 getCityList(cityId).then(res => {
-  // cinimaList.value = res.data
-  console.log(res.data.cinemas)
   cinimaList.value = res.data.cinemas
-  console.log(cinimaList.value)
 })
 </script>
 
@@ -44,11 +41,19 @@ getCityList(cityId).then(res => {
   .content {
     display: flex;
     justify-content: space-between;
+    margin-bottom: 10px;
     .left {
+      width: 285px;
       margin-left: 15px;
       .cinimaName {
-        font-size: 18px;
-        font-weight: 600;
+        font-size: 14px;
+        font-weight: 500;
+      }
+      .cinimaAddress {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-size: 12px;
       }
     }
     .right {

@@ -8,25 +8,28 @@
     >
       <template v-for="(item, index) in movieList" :key="index">
         <div class="movie-item" @click="movieItemClick(item.filmId)">
-          <div class="cover">
-            <img :src="item.poster" alt="" />
-          </div>
+          <div class="left">
+            <div class="cover">
+              <img :src="item.poster" alt="" />
+            </div>
 
-          <div class="item-info">
-            <div class="tittle">{{ item.name }}</div>
-            <div class="info">
-              <div class="score" v-if="item.grade">
-                观众评分
-                <div class="star">{{ item.grade }}</div>
-              </div>
-              <div class="director">导演：{{ item.director }}</div>
-              <div class="actors">
-                演员：
-                <template v-for="iten in item.actors" :key="index">
-                  <span class="actor" v-show="iten.role !== '导演'">
-                    {{ iten.name }}&nbsp;
-                  </span>
-                </template>
+            <div class="item-info">
+              <div class="tittle">{{ item.name }}</div>
+              <div class="info">
+                <div class="score" v-if="item.grade">
+                  观众评分
+                  <div class="star">{{ item.grade }}</div>
+                </div>
+                <div class="score" v-else>暂无评分</div>
+                <div class="director">导演：{{ item.director }}</div>
+                <div class="actors">
+                  演员
+                  <template v-for="iten in item.actors" :key="index">
+                    <span class="actor" v-show="iten.role !== '导演'">
+                      {{ iten.name }}&nbsp;
+                    </span>
+                  </template>
+                </div>
               </div>
             </div>
           </div>
@@ -87,57 +90,75 @@ const movieItemClick = id => {
 
 <style lang="scss" scoped>
 .movieList {
-  padding-top: 0.375rem;
-  margin: 0.3125rem;
+  padding: 12px;
+  background-color: var(--background-color);
   .movie-item {
     display: flex;
     align-items: center;
-    margin: 0.3125rem;
-    .cover {
-      img {
-        width: 4rem;
-        height: 5.625rem;
-      }
-    }
-    .item-info {
-      padding: 0 0.625rem;
-      .tittle {
-        font-size: 0.875rem;
-        margin-bottom: 0.3125rem;
-      }
-      .info {
-        color: #8c8c8c;
-        .score {
-          margin-bottom: 0.1875rem;
-          display: flex;
-          .star {
-            margin-left: 0.125rem;
-            font-weight: 500;
-            color: var(--main-color);
-          }
+    justify-content: space-between;
+    margin-bottom: 9px;
+    border-radius: 5px;
+    padding: 12px;
+    background-color: #fff;
+
+    .left {
+      display: flex;
+      align-items: center;
+      .cover {
+        img {
+          width: 64px;
+          height: 90px;
         }
-        .director {
-          margin-bottom: 0.1875rem;
-        }
-        .actors {
-          display: flex;
-          width: 15rem;
-          margin-bottom: 0.1875rem;
+      }
+      .item-info {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 88px;
+        padding: 0 6px;
+        .tittle {
+          margin-bottom: 6px;
+          font-size: 16px;
           white-space: nowrap; //文本不会换行
           text-overflow: ellipsis; //文本溢出显示省略号
           overflow: hidden;
+        }
+        .info {
+          font-size: 12px;
+          color: #8c8c8c;
+          .score {
+            display: flex;
+
+            margin-bottom: 6px;
+            .star {
+              margin-left: 3px;
+              font-weight: 500;
+              color: var(--main-color);
+            }
+          }
+          .director {
+            margin-bottom: 6px;
+          }
+          .actors {
+            width: 190px;
+            white-space: nowrap; //文本不会换行
+            text-overflow: ellipsis; //文本溢出显示省略号
+            overflow: hidden;
+          }
         }
       }
     }
 
     .buybtn {
-      width: 2.8125rem;
-      background-color: var(--main-color);
-      color: #fff;
-      padding: 0.3125rem;
-      border-radius: 0.3125rem;
       display: flex;
       justify-content: center;
+      align-items: center;
+      width: 54px;
+      height: 28px;
+      border-radius: 15px;
+      font-size: 12px;
+      color: #fff;
+      background-color: var(--main-color);
     }
   }
 }

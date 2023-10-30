@@ -43,6 +43,6 @@ const soonURL = ref(
 
 <style lang="scss" scoped>
 .movie {
-  padding-bottom: 50px;
+  padding-bottom: 40px;
 }
 </style>

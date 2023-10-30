@@ -82,7 +82,6 @@
       >
     </div>
   </div>
-
 </template>
 
 <script setup>
@@ -111,18 +110,19 @@ getmovieDetailList(filmId).then(res => {
 <style lang="scss" scoped>
 .detail {
   .herder {
-    color: #fff;
-    height: 44px;
-    font-size: 17px;
-    background-color: var(--main-color);
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
-    position: relative;
+    height: 44px;
+    font-size: 18px;
+    color: #fff;
+    background-color: var(--main-color);
+
     .icon {
-      padding: 5px;
       position: absolute;
       left: 0;
+      padding: 5px;
     }
   }
 
@@ -132,54 +132,53 @@ getmovieDetailList(filmId).then(res => {
     .poster {
       img {
         width: 100px;
-        height: 138px;
+        height: 140px;
+        border-radius: 6px;
       }
     }
     .info {
       margin-left: 8px;
       width: 100%;
       .CN-title {
-        font-size: 22px;
+        margin-bottom: 15px;
+        font-size: 20px;
       }
       // .EN-title {
       //   margin-top: 3px;
       //   font-size: 16px;
       // }
       .desc {
-        margin-top: 6px;
-        font-size: 12px;
+        font-size: 13px;
         color: gray;
         .nation {
-          margin-bottom: 3px;
+          margin-bottom: 6px;
         }
         .type {
-          margin-bottom: 3px;
+          margin-bottom: 6px;
+        }
+        .time {
+          margin-bottom: 6px;
         }
       }
       .mark {
         display: flex;
-        width: 100%;
-        margin-top: 8px;
-        // background-color: #fff;
         justify-content: space-between;
-        font-size: 15px;
-        // padding: 5px;
         .wanna {
-          border-radius: 8px;
+          text-align: center;
           width: 120px;
           height: 33px;
-          // margin-right: 20px;
           line-height: 30px;
-          text-align: center;
+          border-radius: 8px;
           color: #fff;
           background-color: var(--main-color);
         }
         .watched {
-          border-radius: 8px;
+          text-align: center;
           width: 120px;
           height: 33px;
           line-height: 30px;
-          text-align: center;
+          border-radius: 8px;
+
           color: #fff;
           background-color: var(--main-color);
         }
@@ -189,6 +188,7 @@ getmovieDetailList(filmId).then(res => {
 
   .score {
     display: flex;
+
     align-items: center;
     padding: 0 10px;
     p {
@@ -199,19 +199,24 @@ getmovieDetailList(filmId).then(res => {
   .actors {
     display: flex;
     overflow-x: auto;
-
-    text-align: center;
-
     .iten {
-      padding-right: 8px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-right: 6px;
+
       .actorPhoto {
         img {
           width: 80px;
           height: 110px;
+          border-radius: 6px;
         }
       }
-
+      .actorName{
+        margin-top: 6px;
+      }
       .actorRole {
+        margin-top: 3px;
         color: gray;
       }
     }
@@ -221,9 +226,11 @@ getmovieDetailList(filmId).then(res => {
     display: flex;
     overflow-x: auto;
     img {
-      padding-right: 8px;
       width: 140px;
       height: 90px;
+      margin-right: 6px;
+      border-radius: 6px;
+
     }
   }
 

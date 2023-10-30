@@ -1,7 +1,12 @@
 :root{
   --main-color: #ff5f16;
+  --background-color:#f5f6f8;
   
 } 
 ::-webkit-scrollbar {
   display: none;
 }
+body{
+  font-style: 14px;
+}
+

@@ -45,23 +45,24 @@ if (localStorage.nowCity) {
 
 <style lang="scss" scoped>
 .nav-bar {
+  text-align: center;
   height: 45px;
   line-height: 45px;
   color: #fff;
   background-color: #ff5f16;
-  text-align: center;
   .title {
     position: relative;
     font-size: 18px;
   }
   .location {
-    padding: 0 10px;
     position: absolute;
     top: 0;
     left: 0;
     a {
       color: #fff;
     }
+    padding: 0 10px;
+
   }
 }
 </style>

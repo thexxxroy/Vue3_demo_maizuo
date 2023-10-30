@@ -17,6 +17,6 @@ import cinimaList from "@/components/cinima.list.vue"
 
 <style lang="scss" scoped>
 .cinima {
-  padding-bottom: 50px;
+  padding-bottom: 40px;
 }
 </style>

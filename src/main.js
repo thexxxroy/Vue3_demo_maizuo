@@ -5,8 +5,11 @@ import tabbar from "./components/tabbar.vue"//注册全局组件tabbar
 
 
 //引入基础样式
+import "normalize.css"
 import "./assets/css/reset.css"
 import "./assets/css/common.css"
+import "./assets/css/vant.css"
+// import "./assets/css/mixins.css"
 
 createApp(App)
 .use(router)
