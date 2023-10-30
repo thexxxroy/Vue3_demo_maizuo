@@ -6,7 +6,7 @@
       </div>
       电影
     </div>
-
+    <header></header>
     <div class="summary">
       <div class="poster">
         <img :src="movieDetail.poster" alt="" />
@@ -86,12 +86,13 @@
 
 <script setup>
 import detailSlot from "@/components/detail-slot.vue"
+import header from "@/components/header.vue"
 import { getmovieDetailList } from "@/servies/modules/movieDetail"
 import { ref } from "vue"
 import { useRoute } from "vue-router"
 import { formatDate } from "../utils/format-date"
 
-//返回首页
+// //返回首页
 const onClickLeft = () => history.back()
 
 //接受movieList传来的的query参数

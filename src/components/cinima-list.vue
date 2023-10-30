@@ -7,7 +7,7 @@
       @load="onLoad"
     >
       <template v-for="item in cinimaList">
-        <div class="content" @click="cinimaItemClick">
+        <div class="content" @click="cinimaItemClick(item.cinemaId)">
           <div class="left">
             <div class="cinimaName">{{ item.name }}</div>
             <div class="cinimaAddress">{{ item.address }}</div>
@@ -60,9 +60,10 @@ const onLoad = () => {
 }
 //影院详情跳转
 const router = useRouter()
-const cinimaItemClick = ()=>{
+const cinimaItemClick = (id)=>{
   router.push({
-    path: "/cinimaDetail"
+    path: "/cinimaDetail",
+    query: id
   })
 }
 </script>
