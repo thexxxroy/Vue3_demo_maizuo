@@ -12,7 +12,7 @@
 <script setup>
 import navBar from "@/components/nav-bar.vue"
 import filtrate from "@/components/filtrate.vue"
-import cinimaList from "@/components/cinima.list.vue"
+import cinimaList from "@/components/cinima-list.vue"
 </script>
 
 <style lang="scss" scoped>

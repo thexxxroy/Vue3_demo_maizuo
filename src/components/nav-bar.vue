@@ -49,7 +49,7 @@ if (localStorage.nowCity) {
   height: 45px;
   line-height: 45px;
   color: #fff;
-  background-color: #ff5f16;
+  background-color: var(--main-color);
   .title {
     position: relative;
     font-size: 18px;

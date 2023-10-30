@@ -114,6 +114,8 @@ const movieItemClick = id => {
         display: flex;
         flex-direction: column;
         justify-content: center;
+        width: 190px;
+
         height: 88px;
         padding: 0 6px;
         .tittle {

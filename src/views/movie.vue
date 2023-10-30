@@ -4,9 +4,9 @@
 
     <div class="content">
       <van-tabs
-        color="#ff5f16"
+        color="var(--main-color)"
         line-width="3.5rem"
-        title-active-color="#ff5f16"
+        title-active-color="var(--main-color)"
       >
         <van-tab title="正在热映">
           <movie-list :apiURL="hotURL" />

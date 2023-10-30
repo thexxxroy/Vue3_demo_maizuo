@@ -7,13 +7,15 @@ import city from "@/views/city.vue"
 import movieDetail from "@/views/movieDetail.vue"
 import NotFound from "@/views/NotFound.vue"
 import cinima from "@/views/cinima.vue"
+import cinimaDetail from "@/views/cinimaDetail.vue"
 
 //懒加载 import函数会分包打包
 //魔法注释：/* webpackChunkName: "movie" */ 打包时会命名文件
 // const movie = () => import(/* webpackChunkName: "movie" */ "@/views/movie.vue")
- 
+
 //创建一个路由：路径和组件的映射关系
-const router = createRouter({//创建路由后传入一个对象{}
+const router = createRouter({
+  //创建路由后传入一个对象{}
   //指定采用的模式：hash
   history: createWebHashHistory(),
   routes: [
@@ -37,6 +39,10 @@ const router = createRouter({//创建路由后传入一个对象{}
     {
       path: "/cinima",
       component: cinima,
+    },
+    {
+      path: "/cinimaDetail",
+      component: cinimaDetail,
     },
     {
       path: "/:pathMatch(.*)",
