@@ -4,9 +4,7 @@
       <div class="icon">
         <van-icon name="arrow-left" size="25" @click="onClickLeft" />
       </div>
-      电影
     </div>
-    <header></header>
     <div class="summary">
       <div class="poster">
         <img :src="movieDetail.poster" alt="" />
@@ -15,14 +13,13 @@
         <div class="CN-title">{{ movieDetail.name }}</div>
         <!-- <div class="EN-title">Expend4</div> -->
         <div class="desc">
-          <div class="nation">
-            首映时间：{{ movieDetail.premiereAt }}
-            {{ movieDetail.nation }}
-          </div>
-          <div class="type">{{ movieDetail.category }}</div>
+          <div class="time">首映时间：{{ movieDetail.premiereAt }}</div>
+
+          <div class="type">影片类型：{{ movieDetail.category }}</div>
+          <div class="nation">地区：{{ movieDetail.nation }}</div>
           <div class="time">片长 : {{ movieDetail.runtime }} 分钟</div>
         </div>
-        <div class="mark">
+        <!-- <div class="mark">
           <div class="wanna">
             <van-icon name="like-o" color="#fff" />
             想看
@@ -31,7 +28,7 @@
             <van-icon name="star-o" color="#fff" />
             看过
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
 
@@ -76,17 +73,16 @@
       </div>
     </detail-slot>
 
-    <div class="buyTicketBtn">
+    <!-- <div class="buyTicketBtn">
       <van-button type="primary" block color="var(--main-color)"
         >选座购票</van-button
       >
-    </div>
+    </div> -->
   </div>
 </template>
 
 <script setup>
 import detailSlot from "@/components/detail-slot.vue"
-import header from "@/components/header.vue"
 import { getmovieDetailList } from "@/servies/modules/movieDetail"
 import { ref } from "vue"
 import { useRoute } from "vue-router"
@@ -106,24 +102,21 @@ getmovieDetailList(filmId).then(res => {
   movieDetail.value.grade = Number(movieDetail.value.grade) //评分字符串转数字
   res.data.film.premiereAt = formatDate(res.data.film.premiereAt) //格式化日期
 })
+// console.log(itemm.name);
 </script>
 
 <style lang="scss" scoped>
 .detail {
   .herder {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     height: 44px;
-    font-size: 18px;
+    line-height: 44px;
     color: #fff;
-    background-color: var(--main-color);
 
     .icon {
       position: absolute;
       left: 0;
       padding: 5px;
+      color: #000;
     }
   }
 
@@ -151,39 +144,41 @@ getmovieDetailList(filmId).then(res => {
       .desc {
         font-size: 13px;
         color: gray;
-        .nation {
+        .time {
           margin-bottom: 6px;
         }
         .type {
           margin-bottom: 6px;
         }
-        .time {
+        .nation {
           margin-bottom: 6px;
         }
-      }
-      .mark {
-        display: flex;
-        justify-content: space-between;
-        .wanna {
-          text-align: center;
-          width: 120px;
-          height: 33px;
-          line-height: 30px;
-          border-radius: 8px;
-          color: #fff;
-          background-color: var(--main-color);
-        }
-        .watched {
-          text-align: center;
-          width: 120px;
-          height: 33px;
-          line-height: 30px;
-          border-radius: 8px;
 
-          color: #fff;
-          background-color: var(--main-color);
-        }
+      
       }
+      // .mark {
+      //   display: flex;
+      //   justify-content: space-between;
+      //   .wanna {
+      //     text-align: center;
+      //     width: 120px;
+      //     height: 33px;
+      //     line-height: 30px;
+      //     border-radius: 8px;
+      //     color: #fff;
+      //     background-color: var(--main-color);
+      //   }
+      //   .watched {
+      //     text-align: center;
+      //     width: 120px;
+      //     height: 33px;
+      //     line-height: 30px;
+      //     border-radius: 8px;
+
+      //     color: #fff;
+      //     background-color: var(--main-color);
+      //   }
+      // }
     }
   }
 
@@ -201,9 +196,7 @@ getmovieDetailList(filmId).then(res => {
     display: flex;
     overflow-x: auto;
     .iten {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+      text-align: center;
       padding-right: 6px;
 
       .actorPhoto {
@@ -213,10 +206,19 @@ getmovieDetailList(filmId).then(res => {
           border-radius: 6px;
         }
       }
-      .actorName{
+      .actorName {
+        width: 80px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis; //文本溢出显示省略号
         margin-top: 6px;
       }
       .actorRole {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        width: 80px;
+
         margin-top: 3px;
         color: gray;
       }
@@ -231,12 +233,11 @@ getmovieDetailList(filmId).then(res => {
       height: 90px;
       margin-right: 6px;
       border-radius: 6px;
-
     }
   }
 
-  .buyTicketBtn {
-    padding: 0 10px 10px 10px;
-  }
+  // .buyTicketBtn {
+  //   padding: 0 10px 10px 10px;
+  // }
 }
 </style>

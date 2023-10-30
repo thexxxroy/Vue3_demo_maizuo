@@ -42,7 +42,7 @@
 </template>
 
 <script setup>
-import { getMovieList } from "@/servies/modules/movie_list"
+import { getMovieList } from "@/servies/modules/movie"
 import { ref, defineProps } from "vue"
 import { useRouter } from "vue-router"
 //下拉列表组件
@@ -167,3 +167,4 @@ const movieItemClick = id => {
 </style>
 
 @/servies/axios_request/index @/servies/new_class_axios
+@/servies/modules/movie

@@ -1,6 +1,7 @@
 :root{
   --main-color: #f068ce;
   --background-color:#f5f6f8;
+  --border-color: #ededed
   
 } 
 ::-webkit-scrollbar {

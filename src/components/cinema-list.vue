@@ -1,16 +1,16 @@
 <template>
-  <div class="cinima-list">
+  <div class="cinema-list">
     <van-list
       v-model:loading="loading"
       :finished="finished"
       finished-text="没有更多了"
       @load="onLoad"
     >
-      <template v-for="item in cinimaList">
-        <div class="content" @click="cinimaItemClick(item.cinemaId)">
+      <template v-for="item in cinemaList">
+        <div class="content" @click="cinemaItemClick(item.cinemaId)">
           <div class="left">
-            <div class="cinimaName">{{ item.name }}</div>
-            <div class="cinimaAddress">{{ item.address }}</div>
+            <div class="cinemaName">{{ item.name }}</div>
+            <div class="cinemaAddress">{{ item.address }}</div>
             <!-- <div class="tags">改签 小吃</div> -->
           </div>
 
@@ -25,11 +25,11 @@
 </template>
 
 <script setup>
-import { getCityList } from "@/servies/modules/cinima_list"
+import { getCinemaList } from "@/servies/modules/cinema.js"
 import { ref } from "vue"
 import { useRouter } from "vue-router"
 
-const cinimaList = ref([])
+const cinemaList = ref([])
 const totalPages = ref()
 
 //当前城市数据
@@ -46,8 +46,8 @@ const onLoad = () => {
   // 异步更新数据
   pageSize.value += 10
   //影院数据
-  getCityList(cityId, pageSize.value).then(res => {
-    cinimaList.value = res.data.cinemas
+  getCinemaList(cityId, pageSize.value).then(res => {
+    cinemaList.value = res.data.cinemas
     totalPages.value = res.data.total
     // 加载状态结束
     loading.value = false
@@ -60,18 +60,19 @@ const onLoad = () => {
 }
 //影院详情跳转
 const router = useRouter()
-const cinimaItemClick = (id)=>{
+const cinemaItemClick = cinemaId => {
   router.push({
-    path: "/cinimaDetail",
-    query: id
+    path: "/cinemaDetail",
+    query: { cinemaId },
+
   })
 }
 </script>
 
 <style lang="scss" scoped>
-.cinima-list {
+.cinema-list {
   padding: 11px 12px;
-  background-color:var(--background-color);
+  background-color: var(--background-color);
   .content {
     display: flex;
     justify-content: space-between;
@@ -81,12 +82,12 @@ const cinimaItemClick = (id)=>{
     background-color: #fff;
     .left {
       width: 275px;
-      .cinimaName {
+      .cinemaName {
         margin-bottom: 6px;
         font-size: 14px;
         font-weight: 500;
       }
-      .cinimaAddress {
+      .cinemaAddress {
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -104,3 +105,4 @@ const cinimaItemClick = (id)=>{
   }
 }
 </style>
+@/servies/modules/cinema

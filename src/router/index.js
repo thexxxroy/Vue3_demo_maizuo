@@ -6,8 +6,8 @@ import movie from "@/views/movie.vue"
 import city from "@/views/city.vue"
 import movieDetail from "@/views/movieDetail.vue"
 import NotFound from "@/views/NotFound.vue"
-import cinima from "@/views/cinima.vue"
-import cinimaDetail from "@/views/cinimaDetail.vue"
+import cinema from "@/views/cinema.vue"
+import cinemaDetail from "@/views/cinemaDetail.vue"
 
 //懒加载 import函数会分包打包
 //魔法注释：/* webpackChunkName: "movie" */ 打包时会命名文件
@@ -37,12 +37,12 @@ const router = createRouter({
       component: movieDetail,
     },
     {
-      path: "/cinima",
-      component: cinima,
+      path: "/cinema",
+      component: cinema,
     },
     {
-      path: "/cinimaDetail",
-      component: cinimaDetail,
+      path: "/cinemaDetail",
+      component: cinemaDetail,
     },
     {
       path: "/:pathMatch(.*)",
