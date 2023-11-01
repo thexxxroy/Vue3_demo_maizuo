@@ -1,3 +1,12 @@
+# file 不需要提交的文件
+.browserslistrc
+仿卖座网项目.md
+babel.config.js
+jsconfig.json
+postcss.config.js
+
+
+
 # 忽略依赖目录
 node_modules/
 
@@ -10,7 +19,13 @@ public/
 
 # 忽略编辑器配置文件
 .idea/
-.vscode/
+.vscode/*
+!.vscode/extensions.json
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
 
 # 忽略日志文件 Log
 logs
@@ -33,11 +48,6 @@ db.sqlite3
 # 忽略特定操作系统生成的文件
 .DS_Store
 Thumbs.db
-
-dist
-dist-ssr
 coverage
 
-# file 不需要提交的文件
-仿卖座网项目.md
-postcss.config.js
+
