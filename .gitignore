@@ -1,4 +1,18 @@
-# Logs
+# 忽略依赖目录
+node_modules/
+
+# 忽略构建输出
+dist/
+dist-ssr/
+
+# 忽略运行时生成的文件
+public/
+
+# 忽略编辑器配置文件
+.idea/
+.vscode/
+
+# 忽略日志文件 Log
 logs
 *.log
 npm-debug.log*
@@ -7,20 +21,23 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-node_modules
+# 忽略自动生成的目录和文件
+__pycache__/
+*.pyc
+db.sqlite3
+.env
+
+# 忽略生成的资源映射
+*.map
+
+# 忽略特定操作系统生成的文件
 .DS_Store
+Thumbs.db
+
 dist
 dist-ssr
 coverage
-*.local
-仿卖座网项目.md
 
-# Editor directories and files
-.vscode/*
-!.vscode/extensions.json
-.idea
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
+# file 不需要提交的文件
+仿卖座网项目.md
+postcss.config.js
