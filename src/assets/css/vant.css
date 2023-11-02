@@ -5,3 +5,9 @@
   color: var(--main-color);
 }
 
+.confirmButtonColor{
+  color: var(--main-color) !important;
+
+}
+
+

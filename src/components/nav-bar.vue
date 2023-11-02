@@ -45,6 +45,7 @@ if (localStorage.nowCity) {
 
 <style lang="scss" scoped>
 .nav-bar {
+
   text-align: center;
   height: 45px;
   line-height: 45px;

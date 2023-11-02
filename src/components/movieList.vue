@@ -43,7 +43,7 @@
 
 <script setup>
 import { getMovieList } from "@/servies/modules/movie"
-import { ref, defineProps } from "vue"
+import { ref } from "vue"
 import { useRouter } from "vue-router"
 //下拉列表组件
 const loading = ref(false)

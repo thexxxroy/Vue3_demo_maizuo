@@ -37,8 +37,7 @@ const hotURL = ref(
 const soonURL = ref(
   "getComingSoonFilmList?cityId=" + cityData.value.cityId + "&pageSize="
 )
-// console.log(hotURL)
-// console.log(soonURL)
+
 </script>
 
 <style lang="scss" scoped>

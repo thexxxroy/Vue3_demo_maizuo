@@ -13,9 +13,8 @@
         </swiper-slide>
       </template>
     </swiper>
-    <!-- <img src="" alt=""> -->
-    
   </div>
+
 </template>
 
 <script setup>
