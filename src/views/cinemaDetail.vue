@@ -1,4 +1,5 @@
-<template>
+ 4 /
+}/=-0<template>
   <div class="cinemaDetail">
     <div class="herder">
       <div class="icon">

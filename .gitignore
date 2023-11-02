@@ -1,21 +1,12 @@
 # file 不需要提交的文件
-.browserslistrc
 仿卖座网项目.md
-babel.config.js
-jsconfig.json
-postcss.config.js
-
-
 
 # 忽略依赖目录
-node_modules/
+node_modules
 
 # 忽略构建输出
 dist/
 dist-ssr/
-
-# 忽略运行时生成的文件
-
 
 # 忽略编辑器配置文件
 .idea/
