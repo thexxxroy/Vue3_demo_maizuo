@@ -13,7 +13,7 @@
         </swiper-slide>
       </template>
     </swiper>
-    <img src="/public/bottomicon.png" alt="">
+    <!-- <img src="" alt=""> -->
     
   </div>
 </template>
